@@ -1,21 +1,59 @@
+
 using Microsoft.Extensions.Configuration;
 
-// Läser inställningar från appsettings.json (samma sätt som i hero_databas).
-// Databasens sökväg ligger där, så du slipper skriva den i koden.
+// Läs inställningar från appsettings.json
 var config = new ConfigurationBuilder()
     .SetBasePath(AppContext.BaseDirectory)
     .AddJsonFile("appsettings.json", optional: false)
     .Build();
 
 var connectionString = config.GetConnectionString("Default")
-    ?? throw new InvalidOperationException("Hittar ingen connection string 'Default' i appsettings.json.");
+    ?? throw new InvalidOperationException(
+        "Hittar ingen connection string 'Default' i appsettings.json.");
 
-// Börja här. Den här raden visar att inställningarna lästes in, ta bort den när du vill.
-Console.WriteLine($"Musiklistappen: börja med att få menyn att fungera!  (databas: {connectionString})");
+// Huvudmeny
+bool running = true;
 
-// Tips på ordning (se UPPGIFT.md):
-//   1. Skriv ut huvudmenyn (alternativ numrerade 1-N) och läs in ett val med Console.ReadLine().
-//      Skriv ut "Här kommer en lista senare" tills databasen är kopplad.
-//   2. Skapa ett DbHandler-objekt: new DbHandler(connectionString)
-//   3. Anropa DbHandlers metoder från menyn. Här ska ALDRIG SQL stå.
-//   4. Avsluta snyggt när användaren väljer "Avsluta".
+while (running)
+{
+    Console.WriteLine();
+    Console.WriteLine("=== MUSIKLISTAPPEN ===");
+    Console.WriteLine("1. Visa alla artister");
+    Console.WriteLine("2. Visa alla album");
+    Console.WriteLine("3. Visa alla låtar");
+    Console.WriteLine("4. Sök efter artist");
+    Console.WriteLine("5. Avsluta");
+    Console.Write("Välj ett alternativ: ");
+
+    string? choice = Console.ReadLine();
+
+    switch (choice)
+    {
+        case "1":
+            Console.WriteLine("Här kommer en lista senare");
+            break;
+
+        case "2":
+            Console.WriteLine("Här kommer en lista senare");
+            break;
+
+        case "3":
+            Console.WriteLine("Här kommer en lista senare");
+            break;
+
+        case "4":
+            Console.WriteLine("Här kommer en sökning senare");
+            break;
+
+        case "5":
+            running = false;
+            Console.WriteLine("Tack för att du använde Musiklistappen!");
+            break;
+
+        default:
+            Console.WriteLine("Ogiltigt val. Försök igen.");
+            break;
+    }
+}
+
+Console.WriteLine("Programmet avslutas.");
