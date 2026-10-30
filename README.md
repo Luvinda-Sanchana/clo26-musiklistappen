@@ -1,27 +1,22 @@
 # Musiklistappen — Luvinda Weerasinghe
 
-> **Instruktion till dig:** den här filen är *din* README. Ersätt all text i hakparenteser med din egen, och ta bort den här rutan när du är klar. Uppgiften och kraven står i [`UPPGIFT.md`](UPPGIFT.md), och inlämningen beskrivs i [`INLAMNING.md`](INLAMNING.md).
-
 ---
 
 ## Vad appen gör
 
-[Skriv här: två till tre meningar om din app. Vilken artist handlar den om och vad kan man göra i menyn?]
+Detta är en app för att söka efter låtar från Michael Jacksons mest kända album låtar. Huvudmenyn innehåller sex alternativ: 1. Visa alla låtar, 2. Lägg till en låt, 3. Ta bort en låt, 4. Sök efter en låt, 5. Visa detaljer om en låt och 6. Avsluta. 
 
 ## Så kör du den
 
 ```bash
-git clone [länk till din fork]
-cd [mappens namn]/MusikApp
+git clone (https://github.com/Luvinda-Sanchana/clo26-musiklistappen.git)
+cd C:\git\clo26-musiklistappen\MusikApp
 dotnet run
 ```
 
-[Skriv här om något behöver göras först, t.ex. att `musik.db` ska ligga i mappen `MusikApp/`.]
-
 ## Så ser huvudmenyn ut
 
-[Lägg in en screenshot här. Spara bilden i repot och länka den: `![Huvudmenyn](bild.png)`]
-
+Screenshot Musiklistappen.png / https://github.com/Luvinda-Sanchana/clo26-musiklistappen/blob/main/Screenshot%20Musiklistappen.png
 ---
 
 ## Mina designval (VG)
