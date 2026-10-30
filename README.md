@@ -1,4 +1,4 @@
-# Musiklistappen — [Ditt namn]
+# Musiklistappen — Luvinda Weerasinghe
 
 > **Instruktion till dig:** den här filen är *din* README. Ersätt all text i hakparenteser med din egen, och ta bort den här rutan när du är klar. Uppgiften och kraven står i [`UPPGIFT.md`](UPPGIFT.md), och inlämningen beskrivs i [`INLAMNING.md`](INLAMNING.md).
 
