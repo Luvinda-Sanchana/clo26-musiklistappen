@@ -2,23 +2,6 @@ using Microsoft.Data.Sqlite;
 
 namespace MusikApp;
 
-/// <summary>
-/// ALL databaskod bor här. Program.cs ska aldrig innehålla SQL eller SqliteConnection.
-///
-/// Det här är ett skelett: metoderna finns, kommentarerna visar vad varje metod ska göra,
-/// men koden är din. Alla metoder kastar NotImplementedException tills du har skrivit dem.
-///
-/// ADO.NET i fem steg (samma i varje metod som pratar med databasen):
-///   1. Öppna en anslutning        -> new SqliteConnection(...) och connection.Open()
-///   2. Skapa ett kommando         -> connection.CreateCommand()
-///   3. Skriv SQL:en               -> command.CommandText = "..."
-///   4. Skicka in värden säkert    -> command.Parameters.AddWithValue("@namn", värde)
-///   5. Kör kommandot              -> ExecuteReader() för SELECT, ExecuteNonQuery() för INSERT/DELETE
-///
-/// Använd "using var" på anslutning och kommando så stängs de av sig själva.
-/// Bygg SQL:en med parametrar (@titel), aldrig genom att klistra ihop strängar.
-/// </summary>
-/// 
 public class DbHandler
 {
     private readonly string _connectionString;
@@ -28,11 +11,6 @@ public class DbHandler
         _connectionString = connectionString;
     }
 
-    // ---------------------------------------------------------------
-    // G-nivå: du behöver minst tre av de fem här (välj själv vilka)
-    // ---------------------------------------------------------------
-
-    /// <summary>Hämtar alla låtar, sorterade på titel.</summary>
 
 
     public List<Song> GetAllSongs()
@@ -188,22 +166,4 @@ public class DbHandler
         return rowsAffected > 0;
     }
 
-
-    // ---------------------------------------------------------------
-    // VG-nivå: du behöver minst EN av dessa två (och reflektionen i README)
-    // ---------------------------------------------------------------
-
-    /// <summary>(VG, alternativ A) Låtar tillsammans med albumets namn. Kräver en JOIN.</summary>
-    public List<(string SongTitle, string AlbumName)> GetSongsWithAlbum()
-    {
-        // TODO: SELECT Låtar.Titel, Album.Namn FROM Låtar JOIN Album ON ... ORDER BY ...
-        throw new NotImplementedException();
-    }
-
-    /// <summary>(VG, alternativ B) Låtar som är längre än medellängden. Kräver en subquery.</summary>
-    public List<Song> GetSongsLongerThanAverage()
-    {
-        // TODO: SELECT ... WHERE Längd > (SELECT AVG(Längd) FROM Låtar).
-        throw new NotImplementedException();
-    }
 }
