@@ -198,23 +198,20 @@ while (running)
 
 
         case "4":
-            Console.WriteLine("\n===== SÖK EFTER EN LÅT =====");
-            Console.WriteLine();
-
-            Console.Write("Ange låttitel eller sökord: ");
-            
+            Console.Write("\nAnge låtens titel att söka efter: ");
             string? searchText = Console.ReadLine();
-            
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                Console.WriteLine("Du måste ange ett sökord.");
-                Console.WriteLine("Tryck Enter för att återgå till menyn...");
+                Console.WriteLine("Du måste ange en sökterm.");
+                Console.WriteLine("Tryck Enter för att fortsätta...");
                 Console.ReadLine();
                 break;
             }
 
             var searchResults = db.SearchSongs(searchText.Trim());
+
+            Console.WriteLine("\n====== SÖKRESULTAT ======");
 
             if (searchResults.Count == 0)
             {
@@ -222,20 +219,20 @@ while (running)
             }
             else
             {
-                Console.WriteLine("\n===== SÖKRESULTAT =====");
-                Console.WriteLine();
-
                 foreach (var song in searchResults)
                 {
-                    Console.WriteLine(song.SongTitle);
+                    Console.WriteLine($"Låt: {song.SongTitle}");
+                    Console.WriteLine($"Längd: {song.LengthSeconds} sekunder");
+                    Console.WriteLine($"Album: {song.AlbumName}");
+                    Console.WriteLine("---------------------------");
                 }
             }
 
-        Console.WriteLine();
-        Console.Write("Tryck Enter för att återgå till menyn...");
-        Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Tryck Enter för att återgå till menyn...");
+            Console.ReadLine();
 
-        break;
+            break;
 
 
 

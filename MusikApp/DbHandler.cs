@@ -47,8 +47,6 @@ public class DbHandler
 
 
 
-    /// <summary>Hämtar en specifik låt. Returnerar null om den inte finns.</summary>
-
     public Song? GetSongByTitle(string title)
     {
         using var connection = new SqliteConnection(_connectionString);
@@ -81,21 +79,22 @@ public class DbHandler
         return null;
     }
 
-    public List<Song> SearchSongs(string searchText)
+    public List<(string SongTitle, int LengthSeconds, string AlbumName)> SearchSongs(string searchText)
     {
-        var songs = new List<Song>();
+        var songs = new List<(string SongTitle, int LengthSeconds, string AlbumName)>();
 
         using var connection = new SqliteConnection(_connectionString);
         connection.Open();
 
         using var command = connection.CreateCommand();
 
-        command.CommandText = """
-    SELECT Song_Title, Album_ID, Length_Seconds
-    FROM Songs
-    WHERE Song_Title LIKE @search
-    ORDER BY Song_Title;
-    """;
+        command.CommandText = @"
+        SELECT Songs.Song_Title, Songs.Length_Seconds, Albums.Album_name
+        FROM Songs
+        LEFT JOIN Albums ON Songs.Album_ID = Albums.Album_ID
+        WHERE Songs.Song_Title LIKE @search
+        ORDER BY Songs.Song_Title;
+    ";
 
         command.Parameters.AddWithValue("@search", "%" + searchText + "%");
 
@@ -103,21 +102,16 @@ public class DbHandler
 
         while (reader.Read())
         {
-            var song = new Song
-            {
-                SongTitle = reader.GetString(0),
-                AlbumId = reader.IsDBNull(1) ? null : reader.GetInt32(1),
-                LengthSeconds = reader.IsDBNull(2) ? null : reader.GetInt32(2)
-            };
-
-            songs.Add(song);
+            songs.Add((
+                reader.GetString(0),
+                reader.IsDBNull(1) ? 0 : reader.GetInt32(1),
+                reader.IsDBNull(2) ? "Unknown album" : reader.GetString(2)
+            ));
         }
 
         return songs;
     }
 
-
-    /// <summary>Lägger till en ny låt.</summary>
 
     public void AddSong(Song song)
     {
@@ -144,8 +138,6 @@ public class DbHandler
         command.ExecuteNonQuery();
     }
 
-
-    /// <summary>Tar bort en låt. Returnerar true om en rad faktiskt togs bort.</summary>
 
     public bool DeleteSong(string songTitle)
     {
