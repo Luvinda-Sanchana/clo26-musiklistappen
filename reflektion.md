@@ -38,9 +38,3 @@ Parameteriserade queries skyddar mot SQL injektion och gör koden säkrare. Med 
 I min original databas hade jag inte inkluderat SongID som primary key i tabellen Song. Det innebär att man måste ange låtens namn, inte dess SongID – för att söka efter detaljer om en låt (alternativ 5 i huvudmenyn). Jag insåg detta först mot slutet av projektet. Om jag hade haft tid skulle jag ha ändrat i databasen och åtgärdat problemet, men nu måste man alltså skriva in låtens namn för att få fram resultaten.
 
 ---
-
-## (VG) Varför delade du upp koden som du gjorde?
-
-Resonera kring ditt designval: varför ligger databaskoden i `DbHandler` och inte i `Program.cs`? Vad hade blivit svårare om allt låg i samma fil?
-
-[Skriv här]
