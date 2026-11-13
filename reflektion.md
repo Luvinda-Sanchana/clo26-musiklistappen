@@ -19,15 +19,11 @@ Jag lärde mig hur man kopplar Visual Studio till databaser via C# och hur man k
 
 ## Hur använde du ADO.NET i praktiken — vad kändes naturligt och vad var förvirrande?
 
-Tänk på de fem stegen: öppna anslutning, skapa kommando, skriv SQL, skicka in värden, kör.
-
 Jag använde ADO.NET med Microsoft.Data.Sqlite för att kommunicera med databasen. Jag öppnade en anslutning, skapade SQL-kommandon, skrev SQL-frågor, skickade i värden med parametrar och körde kommandona. Det kändes naturligt att hämta och visa data, men i början var det lite förvirrande att förstå hur anslutningar, kommandon och parametrar fungerar tillsammans.
 
 ---
 
 ## Varför ska man använda parameteriserade queries?
-
-Vad kan hända om man klistrar ihop SQL med strängar i stället? (Tänk på Bobby Tables.)
 
 Parameteriserade queries skyddar mot SQL injektion och gör koden säkrare. Med parametrar behandlas användarens text som ett värde, inte som SQL kod.
 
