@@ -19,18 +19,3 @@ dotnet run
 Screenshot Musiklistappen.png / https://github.com/Luvinda-Sanchana/clo26-musiklistappen/blob/main/Screenshot%20Musiklistappen.png
 ---
 
-## Mina designval (VG)
-
-*Fyll i det här avsnittet om du siktar på VG. Annars kan du ta bort det.*
-
-1. **Hur designade du din databas? Varför valde du just den strukturen?**
-
-   [Skriv här]
-
-2. **Vilket SQL-krav valde du (JOIN eller subquery) och varför passade det din app?**
-
-   [Skriv här]
-
-3. **Vad skulle du gjort annorlunda om du byggde om den från scratch?**
-
-   [Skriv här]
